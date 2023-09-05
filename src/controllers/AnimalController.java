@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalController {
-    public void cadastrarAnimal(Animal animal){
-        String sql = "INSERT INTO animais (nome_animal,id_dono) VALUES (?,?)";
+    public void cadastrarAnimal(Animal animal, int id_cliente){
+        String sql = "INSERT INTO animais (nome_animal,especie, raca, id_cliente) VALUES (?,?,?,?)";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -23,18 +23,20 @@ public class AnimalController {
             preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1,animal.getNome_animal());
-            preparedStatement.setInt(2,animal.getId_dono());
+            preparedStatement.setString(2, animal.getEspecie());
+            preparedStatement.setString(3,animal.getRaca());
+            preparedStatement.setInt(4, id_cliente);
 
             preparedStatement.execute();
 
-            JOptionPane.showMessageDialog(null, "Cadastrado com suceso!");
+            JOptionPane.showMessageDialog(null, "Animal cadastrado com suceso!");
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Erro: " + e);
         }
     }
 
-    public List<Animal> mostrarClientes(){
-        String sql = "SELECT clientes.nome_cliente, animais.nome_animal FROM clientes INNER JOIN animais ON clientes.id_cliente = animais.id_dono";
+    public List<Animal> mostrarAnimais(){
+        String sql = "SELECT animais.nome_animal, clientes.nome_cliente, clientes.id_cliente FROM animais INNER JOIN clientes ON animais.id_cliente = clientes.id_cliente;";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -51,8 +53,8 @@ public class AnimalController {
             while (resultSet.next()){
                 Animal animal = new Animal();
 
-                animal.setId_dono(resultSet.getInt("id_dono"));
                 animal.setNome_animal(resultSet.getString("nome_animal"));
+                animal.setId_cliente(resultSet.getInt("id_cliente"));
 
                 animais.add(animal);
             }

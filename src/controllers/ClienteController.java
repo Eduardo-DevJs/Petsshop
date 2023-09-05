@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ClienteController {
     public void cadastrarCliente(Cliente cliente){
-        String sql = "INSERT INTO clientes (nome_cliente,nome_pet,telefone, cpf) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO clientes (nome_cliente,telefone, cpf) VALUES (?,?,?)";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -22,9 +22,8 @@ public class ClienteController {
             preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1,cliente.getNome_cliente());
-            preparedStatement.setString(2,cliente.getNome_pet());
-            preparedStatement.setString(3,cliente.getTelefone());
-            preparedStatement.setString(4,cliente.getCpf());
+            preparedStatement.setString(2,cliente.getTelefone());
+            preparedStatement.setString(3,cliente.getCpf());
 
             preparedStatement.execute();
 
@@ -54,7 +53,6 @@ public class ClienteController {
 
                 cliente.setId_cliente(resultSet.getInt("id_cliente"));
                 cliente.setNome_cliente(resultSet.getString("nome_cliente"));
-                cliente.setNome_pet(resultSet.getString("nome_pet"));
                 cliente.setTelefone(resultSet.getString("telefone"));
                 cliente.setCpf(resultSet.getString("cpf"));
 
@@ -70,7 +68,7 @@ public class ClienteController {
     }
 
     public void atualizarClientes(Cliente cliente){
-        String sql = "UPDATE clientes SET nome_cliente=?,nome_pet=?,telefone=?,cpf=? WHERE id_cliente";
+        String sql = "UPDATE clientes SET nome_cliente=?,telefone=?,cpf=? WHERE id_cliente";
 
         Connection connection = null;
         PreparedStatement prepareStatement = null;
@@ -81,11 +79,10 @@ public class ClienteController {
             prepareStatement = connection.prepareStatement(sql);
 
             prepareStatement.setString(1,cliente.getNome_cliente());
-            prepareStatement.setString(2,cliente.getNome_pet());
-            prepareStatement.setString(3,cliente.getTelefone());
-            prepareStatement.setString(4,cliente.getCpf());
+            prepareStatement.setString(2,cliente.getTelefone());
+            prepareStatement.setString(3,cliente.getCpf());
 
-            prepareStatement.setInt(5,cliente.getId_cliente());
+            prepareStatement.setInt(4,cliente.getId_cliente());
 
             prepareStatement.execute();
 

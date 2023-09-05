@@ -3,17 +3,17 @@ package models;
 public class Cliente {
     private int id_cliente;
     private String nome_cliente;
-    private String nome_pet;
+
     private String telefone;
     private String cpf;
 
     public Cliente() {
     }
 
-    public Cliente(int id_cliente, String nome_cliente, String nome_pet, String telefone, String cpf) {
+    public Cliente(int id_cliente, String nome_cliente, String telefone, String cpf) {
         this.id_cliente = id_cliente;
         this.nome_cliente = nome_cliente;
-        this.nome_pet = nome_pet;
+
         this.telefone = telefone;
         this.cpf = cpf;
     }
@@ -32,14 +32,6 @@ public class Cliente {
 
     public void setNome_cliente(String nome_cliente) {
         this.nome_cliente = nome_cliente;
-    }
-
-    public String getNome_pet() {
-        return nome_pet;
-    }
-
-    public void setNome_pet(String nome_pet) {
-        this.nome_pet = nome_pet;
     }
 
     public String getTelefone() {
