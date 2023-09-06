@@ -67,4 +67,54 @@ public class AnimalController {
         return animais;
     }
 
+    public void atualizarClientes(Animal animal){
+        String sql = "UPDATE animais SET nome_animal=?,especie=?,raca=?,id_cliente=? WHERE id_animal";
+
+        Connection connection = null;
+        PreparedStatement prepareStatement = null;
+
+        try{
+
+            connection = Conexao.createConnectionMySQL();
+            prepareStatement = connection.prepareStatement(sql);
+
+            prepareStatement.setString(1,animal.getNome_animal());
+            prepareStatement.setString(2,animal.getRaca());
+            prepareStatement.setString(3,animal.getEspecie());
+
+            prepareStatement.setInt(4,animal.getId_animal());
+
+            prepareStatement.execute();
+
+            JOptionPane.showMessageDialog(null,"Atualizado com sucesso!");
+
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro: " + e);
+        }
+    }
+
+    public void deleatarAnimal(int id){
+        String sql = "DELETE FROM animais WHERE id_animal=?";
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+
+            connection = Conexao.createConnectionMySQL();
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1,id);
+
+            preparedStatement.execute();
+
+            JOptionPane.showMessageDialog(null,"Deletado com sucesso!");
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro: " + e);
+        }
+
+    }
+
 }
