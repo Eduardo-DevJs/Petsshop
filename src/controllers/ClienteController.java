@@ -27,7 +27,7 @@ public class ClienteController {
 
             preparedStatement.execute();
 
-            JOptionPane.showMessageDialog(null, "Cadastrado com suceso!");
+            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Erro: " + e);
         }
@@ -68,7 +68,7 @@ public class ClienteController {
     }
 
     public void atualizarClientes(Cliente cliente){
-        String sql = "UPDATE clientes SET nome_cliente=?,telefone=?,cpf=? WHERE id_cliente";
+        String sql = "UPDATE clientes SET nome_cliente=?,telefone=?,cpf=? WHERE id_cliente=?";
 
         Connection connection = null;
         PreparedStatement prepareStatement = null;

@@ -36,7 +36,7 @@ public class AnimalController {
     }
 
     public List<Animal> mostrarAnimais(){
-        String sql = "SELECT animais.nome_animal, clientes.nome_cliente, clientes.id_cliente FROM animais INNER JOIN clientes ON animais.id_cliente = clientes.id_cliente;";
+        String sql = "SELECT animais.nome_animal, animais.raca, animais.especie, clientes.nome_cliente, clientes.id_cliente FROM animais INNER JOIN clientes ON animais.id_cliente = clientes.id_cliente;";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -52,8 +52,12 @@ public class AnimalController {
 
             while (resultSet.next()){
                 Animal animal = new Animal();
+                Cliente cliente = new Cliente();
 
                 animal.setNome_animal(resultSet.getString("nome_animal"));
+                animal.setEspecie(resultSet.getString("especie"));
+                animal.setRaca(resultSet.getString("raca"));
+                cliente.setNome_cliente(resultSet.getString("nome_cliente"));
                 animal.setId_cliente(resultSet.getInt("id_cliente"));
 
                 animais.add(animal);
@@ -94,7 +98,7 @@ public class AnimalController {
         }
     }
 
-    public void deleatarAnimal(int id){
+    public void deletarAnimal(int id){
         String sql = "DELETE FROM animais WHERE id_animal=?";
 
         Connection connection = null;
