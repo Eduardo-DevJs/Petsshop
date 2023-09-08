@@ -24,13 +24,7 @@ public class UtilCliente {
     }
 
     public void mostraClientes(){
-        for (Cliente mostrarCliente : clienteController.mostrarClientes()) {
-            System.out.println("ID: " + mostrarCliente.getId_cliente());
-            System.out.println("Nome: " + mostrarCliente.getNome_cliente());
-            System.out.println("Telefone: " + mostrarCliente.getTelefone());
-            System.out.println("CPF: " + mostrarCliente.getCpf());
-            System.out.println("-------------------------------------------------");
-        }
+       clienteController.mostrarClientes();
     }
 
     public void deleteCliente(){

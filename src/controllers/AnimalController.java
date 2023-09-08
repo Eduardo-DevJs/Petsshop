@@ -71,7 +71,7 @@ public class AnimalController {
         return animais;
     }
 
-    public void atualizarClientes(Animal animal){
+    public void atualizarAnimal(Animal animal){
         String sql = "UPDATE animais SET nome_animal=?,especie=?,raca=?,id_cliente=? WHERE id_animal";
 
         Connection connection = null;

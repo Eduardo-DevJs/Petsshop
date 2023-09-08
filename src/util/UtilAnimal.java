@@ -36,6 +36,7 @@ public class UtilAnimal {
             System.out.println("Especie: " + mostrarAnimai.getEspecie());
             System.out.println("Raça: " + mostrarAnimai.getRaca());
             System.out.println("Id do dono: " + mostrarAnimai.getId_cliente());
+            System.out.println("---------------------------------------------------");
         }
     }
 

@@ -33,30 +33,24 @@ public class ClienteController {
         }
     }
 
-    public List<Cliente> mostrarClientes(){
-        String sql = "SELECT * FROM clientes";
+    public void mostrarClientes(){
+        String sql = "SELECT clientes.nome_cliente, animais.nome_animal, animais.id_animal FROM clientes INNER JOIN animais ON clientes.id_cliente = animais.id_cliente";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-
         try {
-
             connection = Conexao.createConnectionMySQL();
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
-                Cliente cliente = new Cliente();
+                System.out.println("Nome do cliente: " + resultSet.getString("nome_cliente"));
+                System.out.println("Nome do Anima: " + resultSet.getString("nome_animal"));
+                System.out.println("Id do animal: " + resultSet.getString("id_animal"));
 
-                cliente.setId_cliente(resultSet.getInt("id_cliente"));
-                cliente.setNome_cliente(resultSet.getString("nome_cliente"));
-                cliente.setTelefone(resultSet.getString("telefone"));
-                cliente.setCpf(resultSet.getString("cpf"));
-
-                clientes.add(cliente);
+                System.out.println("--------------------------------------------------------------------");
             }
 
 
@@ -64,7 +58,6 @@ public class ClienteController {
             JOptionPane.showMessageDialog(null, "Erro: " + e);
         }
 
-        return clientes;
     }
 
     public void atualizarClientes(Cliente cliente){

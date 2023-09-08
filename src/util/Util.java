@@ -26,17 +26,13 @@ public class Util{
             System.out.println("2 - Mostrar clientes");
             System.out.println("3 - Deletar clientes");
             System.out.println("4 - Atualizar clientes");
+            System.out.println("\n");
             System.out.println("-------- ANIMAL ----------");
             System.out.println("5 - Cadastrar Animal");
             System.out.println("6 - Mostrar animais");
             System.out.println("7 - Deletar animais");
             System.out.println("8 - Atualizar animal");
-            System.out.println("-------- SERVIÇOS ----------");
-            System.out.println("9 - Cadastrar serviço");
-            System.out.println("10 - Mostrar serviço");
-            System.out.println("11 - Deletar serviço");
-            System.out.println("12 - Atualizar serviço");
-
+            System.out.println("\n");
             System.out.println("Digite uma das opções acima: ");
 
             int option = Integer.parseInt(read.nextLine());
