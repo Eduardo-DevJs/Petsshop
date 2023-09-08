@@ -29,14 +29,31 @@ public class UtilAnimal {
     }
 
     public void mostrarAnimais(){
-        AnimalController animalController = new AnimalController();
+        animalController.mostrarAnimais();
+    }
 
-        for (Animal mostrarAnimai : animalController.mostrarAnimais()) {
-            System.out.println("Nome do animal: " + mostrarAnimai.getNome_animal());
-            System.out.println("Especie: " + mostrarAnimai.getEspecie());
-            System.out.println("Raça: " + mostrarAnimai.getRaca());
-            System.out.println("Id do dono: " + mostrarAnimai.getId_cliente());
-            System.out.println("---------------------------------------------------");
+    public void atualizarAnimal(){
+        String input = JOptionPane.showInputDialog("Qual animal deseja atualizar? [ID]");
+        // CONVERTENDO O VALOR RECEBIDO DA VARIAVEL INPUT EM NÚMERO
+        int id = Integer.parseInt(input);
+        animal.setId_animal(id);
+
+
+        int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza?");
+
+        if(confirm == JOptionPane.OK_OPTION){
+            read = JOptionPane.showInputDialog("Editar nome do animal: ");
+            animal.setNome_animal(read);
+            read = JOptionPane.showInputDialog("Editar Raça: ");
+            animal.setRaca(read);
+            read = JOptionPane.showInputDialog("Editar Especie: ");
+            animal.setEspecie(read);
+            read = JOptionPane.showInputDialog("Editar id do dono: ");
+            animal.setId_cliente(Integer.parseInt(read));
+
+            animalController.atualizarAnimal(animal);
+        }else{
+            JOptionPane.showMessageDialog(null,"Atualização cancelada");
         }
     }
 

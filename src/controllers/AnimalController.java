@@ -35,40 +35,42 @@ public class AnimalController {
         }
     }
 
-    public List<Animal> mostrarAnimais(){
-        String sql = "SELECT animais.nome_animal, animais.raca, animais.especie, clientes.nome_cliente, clientes.id_cliente FROM animais INNER JOIN clientes ON animais.id_cliente = clientes.id_cliente;";
+    public void mostrarAnimais(){
+        String sql = "SELECT animais.nome_animal, animais.id_animal, animais.raca, animais.especie, clientes.nome_cliente, clientes.id_cliente FROM animais INNER JOIN clientes ON animais.id_cliente = clientes.id_cliente;";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        ArrayList<Animal> animais = new ArrayList<Animal>();
 
         try {
-
             connection = Conexao.createConnectionMySQL();
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
-                Animal animal = new Animal();
-                Cliente cliente = new Cliente();
+                int idAnimal = resultSet.getInt("id_animal");
+                String nomeAnimal = resultSet.getString("nome_animal");
+                String especie = resultSet.getString("especie");
+                String raca = resultSet.getString("raca");
+                String nomeCliente = resultSet.getString("nome_cliente");
+                int idCliente = resultSet.getInt("id_cliente");
 
-                animal.setNome_animal(resultSet.getString("nome_animal"));
-                animal.setEspecie(resultSet.getString("especie"));
-                animal.setRaca(resultSet.getString("raca"));
-                cliente.setNome_cliente(resultSet.getString("nome_cliente"));
-                animal.setId_cliente(resultSet.getInt("id_cliente"));
+                System.out.println("Id do animal: " + idAnimal);
+                System.out.println("Nome do animal: " + nomeAnimal);
+                System.out.println("Espécie: " + especie);
+                System.out.println("Raça: " + raca);
+                System.out.println("Dono: " + nomeCliente);
+                System.out.println("Id do dono: " + idCliente);
 
-                animais.add(animal);
+                System.out.println("----------------------------------------------");
+
             }
-
 
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Erro: " + e);
         }
 
-        return animais;
     }
 
     public void atualizarAnimal(Animal animal){

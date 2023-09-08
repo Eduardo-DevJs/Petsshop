@@ -34,7 +34,7 @@ public class ClienteController {
     }
 
     public void mostrarClientes(){
-        String sql = "SELECT clientes.nome_cliente, animais.nome_animal, animais.id_animal FROM clientes INNER JOIN animais ON clientes.id_cliente = animais.id_cliente";
+        String sql = "SELECT clientes.nome_cliente, clientes.id_cliente, animais.nome_animal, animais.id_animal FROM clientes INNER JOIN animais ON clientes.id_cliente = animais.id_cliente";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -46,8 +46,9 @@ public class ClienteController {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
+                System.out.println("id do cliente: " + resultSet.getInt("id_cliente"));
                 System.out.println("Nome do cliente: " + resultSet.getString("nome_cliente"));
-                System.out.println("Nome do Anima: " + resultSet.getString("nome_animal"));
+                System.out.println("Nome do Animal: " + resultSet.getString("nome_animal"));
                 System.out.println("Id do animal: " + resultSet.getString("id_animal"));
 
                 System.out.println("--------------------------------------------------------------------");

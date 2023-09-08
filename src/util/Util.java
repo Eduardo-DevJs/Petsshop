@@ -59,6 +59,9 @@ public class Util{
                 case 7:
                     utilAnimal.deleteAnimal();
                     break;
+                case 8:
+                    utilAnimal.atualizarAnimal();
+                    break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opção inválida");
                     break;
