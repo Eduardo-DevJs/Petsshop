@@ -74,7 +74,7 @@ public class AnimalController {
     }
 
     public void atualizarAnimal(Animal animal){
-        String sql = "UPDATE animais SET nome_animal=?,especie=?,raca=?,id_cliente=? WHERE id_animal";
+        String sql = "UPDATE animais SET nome_animal=?,especie=?,raca=?,id_cliente=? WHERE id_animal=?";
 
         Connection connection = null;
         PreparedStatement prepareStatement = null;
@@ -87,8 +87,9 @@ public class AnimalController {
             prepareStatement.setString(1,animal.getNome_animal());
             prepareStatement.setString(2,animal.getRaca());
             prepareStatement.setString(3,animal.getEspecie());
+            prepareStatement.setInt(4, animal.getId_cliente());
 
-            prepareStatement.setInt(4,animal.getId_animal());
+            prepareStatement.setInt(5,animal.getId_animal());
 
             prepareStatement.execute();
 

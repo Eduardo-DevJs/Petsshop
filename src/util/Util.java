@@ -18,7 +18,7 @@ public class Util{
 
     public void menuOpcoes(){
         Scanner read = new Scanner(System.in);
-        String op;
+        int op;
         char res;
         do{
             System.out.println("-------- CLIENTES ----------");
@@ -67,7 +67,7 @@ public class Util{
                     break;
             }
 
-            op = JOptionPane.showInputDialog("Deseja voltar ao menu? [S/n]");
-        }while (op.charAt(0) != 'n');
+             op = JOptionPane.showConfirmDialog(null, "Deseja voltar ao menu? ");
+        }while (op != JOptionPane.NO_OPTION && op != JOptionPane.CANCEL_OPTION);
     }
 }
