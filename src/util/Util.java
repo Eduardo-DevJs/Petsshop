@@ -1,13 +1,5 @@
 package util;
-
-import controllers.AnimalController;
-import java.util.HashSet;
-import controllers.ClienteController;
-import models.Animal;
-import models.Cliente;
-
 import javax.swing.*;
-
 import java.util.Scanner;
 
 public class Util{
@@ -33,7 +25,12 @@ public class Util{
             System.out.println("7 - Deletar animais");
             System.out.println("8 - Atualizar animal");
             System.out.println("\n");
+            System.out.println("-------- SERVICOS ----------");
+            System.out.println("9 - Cadastrar servico");
+            System.out.println("10 - Mostrar servicos");
+            System.out.println("\n");
             System.out.println("Digite uma das opções acima: ");
+
 
             int option = Integer.parseInt(read.nextLine());
 
@@ -62,6 +59,12 @@ public class Util{
                 case 8:
                     utilAnimal.atualizarAnimal();
                     break;
+                case 9:
+                    utilServicos.createServico();
+                    break;
+                case 10:
+                    utilServicos.mostrarServicos();
+                    break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opção inválida");
                     break;
@@ -69,5 +72,6 @@ public class Util{
 
              op = JOptionPane.showConfirmDialog(null, "Deseja voltar ao menu? ");
         }while (op != JOptionPane.NO_OPTION && op != JOptionPane.CANCEL_OPTION);
+
     }
 }
