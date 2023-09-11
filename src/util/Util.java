@@ -59,12 +59,6 @@ public class Util{
                 case 8:
                     utilAnimal.atualizarAnimal();
                     break;
-                case 9:
-                    utilServicos.createServico();
-                    break;
-                case 10:
-                    utilServicos.mostrarServicos();
-                    break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opção inválida");
                     break;

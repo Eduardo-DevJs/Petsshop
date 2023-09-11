@@ -36,7 +36,7 @@ public class AnimalController {
     }
 
     public void mostrarAnimais(){
-        String sql = "SELECT animais.nome_animal, animais.id_animal, animais.raca, animais.especie, clientes.nome_cliente, clientes.id_cliente FROM animais INNER JOIN clientes ON animais.id_cliente = clientes.id_cliente;";
+        String sql = "SELECT animais.nome_animal, animais.id_animal, animais.raca, animais.especie, clientes.nome_cliente, clientes.id_cliente FROM animais INNER JOIN clientes ON animais.id_cliente = clientes.id_cliente";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
