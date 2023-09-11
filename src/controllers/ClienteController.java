@@ -82,9 +82,8 @@ public class ClienteController {
 
             JOptionPane.showMessageDialog(null,"Atualizado com sucesso!");
 
-
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro: " + e);
+            System.out.println("Erro: " + e);
         }
     }
 
@@ -106,7 +105,8 @@ public class ClienteController {
             JOptionPane.showMessageDialog(null,"Deletado com sucesso!");
 
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro: " + e);
+            JOptionPane.showMessageDialog(null, "Não é possivel deletar um cliente sem deletar o animal primeiro");
+            System.out.println("Erro " + e);
         }
 
     }

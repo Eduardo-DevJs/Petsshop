@@ -97,7 +97,7 @@ public class AnimalController {
 
 
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro: " + e);
+            System.out.println("Erro: " + e);
         }
     }
 
