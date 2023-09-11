@@ -22,8 +22,11 @@ public class ServicoController {
             preparedStatement.setString(1, servicos.getTipo_servico());
             preparedStatement.setInt(2, servicos.getPreco());
             preparedStatement.setString(3, servicos.getDescricao());
+            preparedStatement.setInt(4, servicos.getId_animal());
 
             preparedStatement.execute();
+
+            JOptionPane.showMessageDialog(null,"SERVIÇO CADASTRADO COM SUCESSO!");
 
         }catch (Exception e){
             System.out.println("Erro: " + e);
@@ -60,6 +63,48 @@ public class ServicoController {
         }catch (Exception e){
             System.out.println("Erro: " + e);
         }
+    }
 
+    public void updateServico(Servicos servicos){
+        String sql = "UPDATE servicos SET tipo_servico=?, preco=?, descricao=?,id_animal=?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = Conexao.createConnectionMySQL();
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, servicos.getTipo_servico());
+            preparedStatement.setDouble(2, servicos.getPreco());
+            preparedStatement.setString(3, servicos.getDescricao());
+            preparedStatement.setInt(4, servicos.getId_animal());
+
+            preparedStatement.execute();
+
+            JOptionPane.showMessageDialog(null, "SERVICO ATUALIZADO COM SUCESSO!");
+        }catch (Exception e){
+            System.out.println("Erro: " + e);
+        }
+    }
+    public void deletarServico(int id){
+        String sql = "DELETE FROM servicos WHERE id_servico=?";
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try{
+            connection = Conexao.createConnectionMySQL();
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1,id);
+
+            preparedStatement.execute();
+
+            JOptionPane.showMessageDialog(null,"SERVIÇO DELETADO COM SUCESSO");
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Não é possivel deletar servico sem deletar o animal");
+            System.out.println("Erro: " + e);
+        }
     }
 }

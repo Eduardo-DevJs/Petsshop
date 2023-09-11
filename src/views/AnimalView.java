@@ -1,11 +1,11 @@
-package util;
+package views;
 
 import controllers.AnimalController;
 import models.Animal;
 
 import javax.swing.*;
 
-public class UtilAnimal {
+public class AnimalView {
     String read;
     AnimalController animalController = new AnimalController();
     Animal animal = new Animal();

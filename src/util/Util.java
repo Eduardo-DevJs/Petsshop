@@ -1,18 +1,21 @@
 package util;
+import views.AnimalView;
+import views.ClienteView;
+import views.ServicosView;
+
 import javax.swing.*;
 import java.util.Scanner;
 
 public class Util{
-    UtilAnimal utilAnimal = new UtilAnimal();
-    UtilCliente utilCliente = new UtilCliente();
-    UtilServicos utilServicos = new UtilServicos();
-    String read;
+    AnimalView animalView = new AnimalView();
+    ClienteView clienteView = new ClienteView();
+    ServicosView servicosView = new ServicosView();
 
     public void menuOpcoes(){
         Scanner read = new Scanner(System.in);
         int op;
-        char res;
         do{
+            System.out.println("\n");
             System.out.println("-------- CLIENTES ----------");
             System.out.println("1 - Cadastrar Cliente");
             System.out.println("2 - Mostrar clientes");
@@ -28,6 +31,8 @@ public class Util{
             System.out.println("-------- SERVICOS ----------");
             System.out.println("9 - Cadastrar servico");
             System.out.println("10 - Mostrar servicos");
+            System.out.println("11 - Deletar serviço");
+            System.out.println("12 - Atualizar serviço");
             System.out.println("\n");
             System.out.println("Digite uma das opções acima: ");
 
@@ -36,28 +41,40 @@ public class Util{
 
             switch (option){
                 case 1:
-                    utilCliente.createCliente();
+                    clienteView.createCliente();
                     break;
                 case 2:
-                    utilCliente.mostraClientes();
+                    clienteView.mostraClientes();
                     break;
                 case 3:
-                    utilCliente.deleteCliente();
+                    clienteView.deleteCliente();
                     break;
                 case 4:
-                    utilCliente.atualizaCliente();
+                    clienteView.atualizaCliente();
                     break;
                 case 5:
-                    utilAnimal.cadastrarAnimal();
+                    animalView.cadastrarAnimal();
                     break;
                 case 6:
-                    utilAnimal.mostrarAnimais();
+                    animalView.mostrarAnimais();
                     break;
                 case 7:
-                    utilAnimal.deleteAnimal();
+                    animalView.deleteAnimal();
                     break;
                 case 8:
-                    utilAnimal.atualizarAnimal();
+                    animalView.atualizarAnimal();
+                    break;
+                case 9:
+                    servicosView.cadastraServico();
+                    break;
+                case 10:
+                    servicosView.mostrarServicos();
+                    break;
+                case 11:
+                    servicosView.deletarServico();
+                    break;
+                case 12:
+                    servicosView.atualizarServico();
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opção inválida");

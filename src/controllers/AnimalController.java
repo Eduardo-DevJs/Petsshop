@@ -120,7 +120,8 @@ public class AnimalController {
             JOptionPane.showMessageDialog(null,"Deletado com sucesso!");
 
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro: " + e);
+            JOptionPane.showMessageDialog(null, "Delete o serviço primero, antes do animal");
+            System.out.println("Erro: " + e);
         }
 
     }

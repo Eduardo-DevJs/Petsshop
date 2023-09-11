@@ -1,11 +1,11 @@
-package util;
+package views;
 
 import controllers.ClienteController;
 import models.Cliente;
 
 import javax.swing.*;
 
-public class UtilCliente {
+public class ClienteView {
     String read;
     ClienteController clienteController = new ClienteController();
     Cliente cliente  = new Cliente();
@@ -24,23 +24,14 @@ public class UtilCliente {
     }
 
     public void mostraClientes(){
-       clienteController.mostrarClientes();
-    }
-
-    public void deleteCliente(){
-        String input = JOptionPane.showInputDialog("Qual cliente deseja deletar? [ID]");
-
-        // CONVERTENDO O VALOR RECEBIDO DA VARIAVEL INPUT EM NÚMERO
-        int id = Integer.parseInt(input);
-
-        int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza?");
-
-        if(confirm == JOptionPane.OK_OPTION){
-            clienteController.deletarCliente(id);
-        }else{
-            JOptionPane.showMessageDialog(null,"Atualização cancelada");
+        for (Cliente mostrarCliente : clienteController.mostrarClientes()) {
+            System.out.println("ID do cliente: " + mostrarCliente.getId_cliente());
+            System.out.println("Nome do cliente: " + mostrarCliente.getNome_cliente());
+            System.out.println("Telefone: " + mostrarCliente.getTelefone());
+            System.out.println("CPF: " + mostrarCliente.getCpf());
         }
     }
+
 
     public void atualizaCliente(){
         String input = JOptionPane.showInputDialog("Qual cliente deseja atualizar? [ID]");
@@ -62,6 +53,21 @@ public class UtilCliente {
             clienteController.atualizarClientes(cliente);
         }else{
             JOptionPane.showMessageDialog(null,"Atualização cancelada");
+        }
+    }
+
+    public void deleteCliente(){
+        String input = JOptionPane.showInputDialog("Qual cliente deseja deletar? [ID]");
+
+        // CONVERTENDO O VALOR RECEBIDO DA VARIAVEL INPUT EM NÚMERO
+        int id = Integer.parseInt(input);
+
+        int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza?");
+
+        if(confirm == JOptionPane.OK_OPTION){
+            clienteController.deletarCliente(id);
+        }else{
+            JOptionPane.showMessageDialog(null,"Exclusão cancelada");
         }
     }
 

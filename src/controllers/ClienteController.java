@@ -33,12 +33,14 @@ public class ClienteController {
         }
     }
 
-    public void mostrarClientes(){
-        String sql = "SELECT clientes.nome_cliente, clientes.id_cliente, animais.nome_animal, animais.id_animal FROM clientes INNER JOIN animais ON clientes.id_cliente = animais.id_cliente";
+    public List<Cliente> mostrarClientes(){
+        String sql = "SELECT * FROM clientes";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
         try {
             connection = Conexao.createConnectionMySQL();
@@ -46,18 +48,24 @@ public class ClienteController {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
-                System.out.println("id do cliente: " + resultSet.getInt("id_cliente"));
-                System.out.println("Nome do cliente: " + resultSet.getString("nome_cliente"));
-                System.out.println("Nome do Animal: " + resultSet.getString("nome_animal"));
-                System.out.println("Id do animal: " + resultSet.getString("id_animal"));
+                Cliente cliente = new Cliente();
 
+                cliente.setId_cliente(resultSet.getInt("id_cliente"));
+                cliente.setNome_cliente(resultSet.getString("nome_cliente"));
+                cliente.setTelefone(resultSet.getString("telefone"));
+                cliente.setCpf(resultSet.getString("cpf"));
                 System.out.println("--------------------------------------------------------------------");
+
+                clientes.add(cliente);
+
             }
 
 
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Erro: " + e);
         }
+
+        return clientes;
 
     }
 
