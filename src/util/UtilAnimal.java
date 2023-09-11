@@ -10,9 +10,6 @@ public class UtilAnimal {
     AnimalController animalController = new AnimalController();
     Animal animal = new Animal();
     public void cadastrarAnimal(){
-        AnimalController animalController = new AnimalController();
-        Animal animal = new Animal();
-
         JOptionPane.showMessageDialog(null,"CADASTRO DE ANIMAL");
 
         read = JOptionPane.showInputDialog("Nome do animal: ");

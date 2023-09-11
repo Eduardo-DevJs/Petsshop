@@ -31,7 +31,8 @@ public class AnimalController {
 
             JOptionPane.showMessageDialog(null, "Animal cadastrado com suceso!");
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro: " + e);
+            JOptionPane.showMessageDialog(null, "Não é possivel cadastra um animal sem um cliente.");
+            System.out.println("Erro: " + e);
         }
     }
 
@@ -68,7 +69,7 @@ public class AnimalController {
             }
 
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro: " + e);
+            System.out.println("Erro: " + e);
         }
 
     }
