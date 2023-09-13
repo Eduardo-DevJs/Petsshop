@@ -8,10 +8,10 @@ import javax.swing.*;
 public class ClienteView {
     String read;
     ClienteController clienteController = new ClienteController();
-    Cliente cliente  = new Cliente();
+    Cliente cliente = new Cliente();
 
-    public void createCliente(){
-        JOptionPane.showMessageDialog(null,"CADASTRO DE CLIENTE");
+    public void createCliente() {
+        JOptionPane.showMessageDialog(null, "CADASTRO DE CLIENTE");
 
         read = JOptionPane.showInputDialog("Nome do cliente: ");
         cliente.setNome_cliente(read);
@@ -23,17 +23,12 @@ public class ClienteView {
         clienteController.cadastrarCliente(cliente);
     }
 
-    public void mostraClientes(){
-        for (Cliente mostrarCliente : clienteController.mostrarClientes()) {
-            System.out.println("ID do cliente: " + mostrarCliente.getId_cliente());
-            System.out.println("Nome do cliente: " + mostrarCliente.getNome_cliente());
-            System.out.println("Telefone: " + mostrarCliente.getTelefone());
-            System.out.println("CPF: " + mostrarCliente.getCpf());
-        }
+    public void mostraClientes() {
+        clienteController.mostrarClientes();
     }
 
 
-    public void atualizaCliente(){
+    public void atualizaCliente() {
         String input = JOptionPane.showInputDialog("Qual cliente deseja atualizar? [ID]");
         // CONVERTENDO O VALOR RECEBIDO DA VARIAVEL INPUT EM NÚMERO
         int id = Integer.parseInt(input);
@@ -42,7 +37,7 @@ public class ClienteView {
 
         int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza?");
 
-        if(confirm == JOptionPane.OK_OPTION){
+        if (confirm == JOptionPane.OK_OPTION) {
             read = JOptionPane.showInputDialog("Editar nome do cliente: ");
             cliente.setNome_cliente(read);
             read = JOptionPane.showInputDialog("Editar telefone: ");
@@ -51,12 +46,12 @@ public class ClienteView {
             cliente.setCpf(read);
 
             clienteController.atualizarClientes(cliente);
-        }else{
-            JOptionPane.showMessageDialog(null,"Atualização cancelada");
+        } else {
+            JOptionPane.showMessageDialog(null, "Atualização cancelada");
         }
     }
 
-    public void deleteCliente(){
+    public void deleteCliente() {
         String input = JOptionPane.showInputDialog("Qual cliente deseja deletar? [ID]");
 
         // CONVERTENDO O VALOR RECEBIDO DA VARIAVEL INPUT EM NÚMERO
@@ -64,10 +59,10 @@ public class ClienteView {
 
         int confirm = JOptionPane.showConfirmDialog(null, "Tem certeza?");
 
-        if(confirm == JOptionPane.OK_OPTION){
+        if (confirm == JOptionPane.OK_OPTION) {
             clienteController.deletarCliente(id);
-        }else{
-            JOptionPane.showMessageDialog(null,"Exclusão cancelada");
+        } else {
+            JOptionPane.showMessageDialog(null, "Exclusão cancelada");
         }
     }
 

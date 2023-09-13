@@ -29,6 +29,7 @@ public class ServicoController {
             JOptionPane.showMessageDialog(null,"SERVIÇO CADASTRADO COM SUCESSO!");
 
         }catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Não é possível cadastrar sem ao menos ter um animal");
             System.out.println("Erro: " + e);
         }
     }

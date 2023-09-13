@@ -12,6 +12,7 @@ public class AnimalView {
     public void cadastrarAnimal(){
         JOptionPane.showMessageDialog(null,"CADASTRO DE ANIMAL");
 
+
         read = JOptionPane.showInputDialog("Nome do animal: ");
         animal.setNome_animal(read);
         read = JOptionPane.showInputDialog("Raça: ");

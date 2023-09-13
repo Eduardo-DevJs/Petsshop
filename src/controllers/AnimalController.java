@@ -57,7 +57,7 @@ public class AnimalController {
                 String nomeCliente = resultSet.getString("nome_cliente");
                 int idCliente = resultSet.getInt("id_cliente");
 
-                System.out.println("Id do animal: " + idAnimal);
+                System.out.println("Registro do animal: " + idAnimal);
                 System.out.println("Nome do animal: " + nomeAnimal);
                 System.out.println("Espécie: " + especie);
                 System.out.println("Raça: " + raca);

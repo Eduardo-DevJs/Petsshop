@@ -29,18 +29,16 @@ public class ClienteController {
 
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro: " + e);
+            System.out.println("Erro: " + e);
         }
     }
 
-    public List<Cliente> mostrarClientes(){
-        String sql = "SELECT * FROM clientes";
+    public void mostrarClientes(){
+        String sql = "select clientes.id_cliente, clientes.nome_cliente, clientes.telefone, clientes.cpf, animais.nome_animal from animais INNER JOIN clientes ON animais.id_cliente = clientes.id_cliente;";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-
-        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
         try {
             connection = Conexao.createConnectionMySQL();
@@ -48,16 +46,17 @@ public class ClienteController {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
-                Cliente cliente = new Cliente();
+                int codigoCliente = resultSet.getInt("id_cliente");
+                String nomeCliente = resultSet.getString("nome_cliente");
+                String telefone = resultSet.getString("telefone");
+                String cpf = resultSet.getString("cpf");
+                String nomeAnimal = resultSet.getString("nome_animal");
 
-                cliente.setId_cliente(resultSet.getInt("id_cliente"));
-                cliente.setNome_cliente(resultSet.getString("nome_cliente"));
-                cliente.setTelefone(resultSet.getString("telefone"));
-                cliente.setCpf(resultSet.getString("cpf"));
-                System.out.println("--------------------------------------------------------------------");
-
-                clientes.add(cliente);
-
+                System.out.println("Codigo do cliente: " + codigoCliente);
+                System.out.println("Nome do cliente: " + nomeCliente);
+                System.out.println("Telefone: " + telefone);
+                System.out.println("CPF: " + cpf);
+                System.out.println("Pet: " + nomeAnimal);
             }
 
 
@@ -65,7 +64,6 @@ public class ClienteController {
             JOptionPane.showMessageDialog(null, "Erro: " + e);
         }
 
-        return clientes;
 
     }
 
